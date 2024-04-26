@@ -4,6 +4,7 @@ var button = Button.new()
 var end_game_image = Sprite2D.new()
 var end_game_started = false
 var end_game_start_time = 0
+var end_game_sound_player = AudioStreamPlayer.new()
 @onready
 var sound_player = $AudioStreamPlayer2D
 
@@ -21,6 +22,9 @@ func _ready():
 	end_game_image.position = button.position
 	end_game_image.visible = false
 	add_child(end_game_image)
+	
+	end_game_sound_player.stream = preload("res://gameoversound.mp3")
+	add_child(end_game_sound_player)
 
 func _process(delta):
 	if sound_player.is_playing():
@@ -50,6 +54,7 @@ func end_game():
 	end_game_started = true
 	end_game_start_time = Time.get_ticks_msec()
 	sound_player.stop()
+	end_game_sound_player.play()
 	
 func go_to_main_menu():
-	pass
+	get_tree().change_scene_to_file("res://main.tscn")
