@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cthfen5hjcp8e"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_hropf"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_hropf")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 499.0
+offset_top = 90.0
+offset_right = 798.0
+offset_bottom = 264.0
+text = "Hello World"
