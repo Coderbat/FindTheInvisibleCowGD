@@ -1,10 +1,11 @@
 extends Node2D
 
 var button = Button.new()
-var sound_player = AudioStreamPlayer.new()
 var end_game_image = Sprite2D.new()
 var end_game_started = false
 var end_game_start_time = 0
+@onready
+var sound_player = $AudioStreamPlayer2D
 
 
 func _ready():
@@ -14,7 +15,6 @@ func _ready():
 	#button.modulate = Color(1, 1, 1, 0) 
 	add_child(button)
 
-	sound_player.stream = preload("res://backgroundmusic.mp3")
 	add_child(sound_player)
 	sound_player.play()
 	end_game_image.texture = preload("res://cow.png")
