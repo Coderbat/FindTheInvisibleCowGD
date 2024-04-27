@@ -1,7 +1,7 @@
 extends Control
 
-@onready var start_button = $MarginContainer/HBoxContainer/VBoxContainer/Button1 as Button
-@onready var quit_button = $MarginContainer/HBoxContainer/VBoxContainer/Button2 as Button
+@onready var start_button = $MarginContainer/VBoxContainer/Button1 as Button
+@onready var quit_button = $MarginContainer/VBoxContainer/Button2 as Button
 @onready var start_level = preload("res://World.tscn")
 
 func _ready():
