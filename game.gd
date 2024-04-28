@@ -33,6 +33,8 @@ func _process(delta):
 		var max_distance = sqrt(get_viewport().size.x * get_viewport().size.x + get_viewport().size.y * get_viewport().size.y)
 		var volume_ratio = 1 - pow(distance / max_distance, 0.5)
 		sound_player.volume_db = linear2db(volume_ratio)
+		var speed_ratio = volume_ratio + 0.8  # Adjust this formula as needed
+		sound_player.pitch_scale = speed_ratio
 	if end_game_started:
 		var elapsed_time = Time.get_ticks_msec() - end_game_start_time
 		if elapsed_time < 10000:
