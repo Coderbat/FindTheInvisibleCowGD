@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4vsbs8hsr1v5"]
+[gd_scene load_steps=7 format=3 uid="uid://c4vsbs8hsr1v5"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ohcuy"]
 [ext_resource type="Texture2D" uid="uid://dvf1ngrnyoqop" path="res://background.jpg" id="2_iqixq"]
+[ext_resource type="AudioStream" uid="uid://c5r6sfp0rja2c" path="res://backgroundmusic.mp3" id="3_psise"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpgmo"]
 bg_color = Color(0.756863, 0.564706, 0.160784, 1)
@@ -94,3 +95,6 @@ layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_pq5uo")
 theme_override_font_sizes/font_size = 100
 text = "QUIT"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_psise")

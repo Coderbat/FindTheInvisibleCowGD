@@ -6,15 +6,19 @@ extends Control
 @onready var ScoreLabel = $MarginContainer/VBoxContainer/Label2
 var save_file = "user://score.save"
 var score = 0
+@onready var background_sound = $AudioStreamPlayer2D
 
 func _ready():
 	start_button.button_down.connect(on_start_pressed)
 	quit_button.button_down.connect(on_exit_pressed)
 	load_score()
 	ScoreLabel.text = "SCORE: "+str(score)
+	add_child(background_sound)
+	background_sound.play()
 	
 	
 func on_start_pressed():
+	background_sound.stop()
 	get_tree().change_scene_to_packed(start_level)
 	
 func on_exit_pressed():
