@@ -8,6 +8,8 @@ var end_game_start_time = 0
 var end_game_sound_player = AudioStreamPlayer.new()
 @onready
 var sound_player = $AudioStreamPlayer2D
+var save_file = "user://score.save"
+var score = 0
 
 
 func _ready():
@@ -48,6 +50,9 @@ func _process(delta):
 			var scale = 1 + elapsed_time / 5000.0
 			end_game_image.scale = Vector2(scale, scale)
 		else:
+			load_score()
+			score +=1
+			save_score()
 			go_to_main_menu()
 
 
@@ -67,3 +72,15 @@ func end_game():
 	
 func go_to_main_menu():
 	get_tree().change_scene_to_file("res://main.tscn")
+func load_score():
+	var save_data = ConfigFile.new()
+	var err = save_data.load(save_file)
+
+	if err == OK:  # If the file loaded successfully
+		score = save_data.get_value("score", "value", 0)  # The third parameter is a default value in case the key doesn't exist
+	else:
+		print("Error loading save file: ", err)
+func save_score():
+	var save_data = ConfigFile.new()
+	save_data.set_value("score", "value", score)
+	save_data.save(save_file)
