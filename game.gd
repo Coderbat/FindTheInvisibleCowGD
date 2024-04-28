@@ -1,6 +1,7 @@
 extends Node2D
 
 var button = Button.new()
+var back_button = Button.new()
 var end_game_image = Sprite2D.new()
 var end_game_started = false
 var end_game_start_time = 0
@@ -11,10 +12,16 @@ var sound_player = $AudioStreamPlayer2D
 
 func _ready():
 	button.set_size(Vector2(100, 50))
-	button.set_position(Vector2(randf_range(0, get_viewport().size.x - button.get_size().x), randf_range(0, get_viewport().size.y - button.get_size().y)))
+	button.set_position(Vector2(randf_range(200, get_viewport().size.x - button.get_size().x), randf_range(0, get_viewport().size.y - button.get_size().y)))
 	button.connect("pressed",end_game)
 	#button.modulate = Color(1, 1, 1, 0) 
 	add_child(button)
+	
+	back_button.text = "Back"
+	back_button.set_size(Vector2(100, 50))
+	back_button.set_position(Vector2(10, 10))  # Position the back button at the top-left corner of the screen
+	back_button.connect("pressed",go_to_main_menu)  # Connect the back button's "pressed" signal to the go_to_main_menu function
+	add_child(back_button)
 
 	add_child(sound_player)
 	sound_player.play()
